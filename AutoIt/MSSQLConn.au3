@@ -2,17 +2,23 @@ Global $SQLConn = ObjCreate("ADODB.Connection")
 Global $SQLRecordSet = ObjCreate("ADODB.Recordset")
 $oMyError = ObjEvent("AutoIt.Error","MyErrFunc")
 
+$server = "localhost"
+$db = "mylocaldb"
+$username = "sa"
+$password = "xxxxxx"
+$sqlString = "SELECT * FROM mytable"
+
 With $SQLConn
 .Provider = "SQLOLEDB.1"
-	.Properties("Initial Catalog") = "mylocaldb"
-	.Properties("Data Source").Value = "localhost"
-;.Properties("Integrated Security").Value = "SSPI"
-;.Properties("Persist Security Info").Value = "True"
-.Properties("User ID").Value = "sa"
-.Properties("Password").Value = "xxxxxxx"
-.Open
+	.Properties("Initial Catalog") = $db
+	.Properties("Data Source").Value = $server
+    ;.Properties("Integrated Security").Value = "SSPI"
+    ;.Properties("Persist Security Info").Value = "True"
+    .Properties("User ID").Value = $username
+    .Properties("Password").Value = $password
+    .Open
 EndWith
-$SQLRecordSet.Open("select id, name from mytable",$SQLConn)
+$SQLRecordSet.Open($sqlString,$SQLConn)
 Local $result = $SQLRecordSet.GetString
 ConsoleWrite($result)
 
