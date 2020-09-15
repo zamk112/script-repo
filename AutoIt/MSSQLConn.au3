@@ -12,11 +12,11 @@ With $SQLConn
 .Provider = "SQLOLEDB.1"
 	.Properties("Initial Catalog") = $db
 	.Properties("Data Source").Value = $server
-    ;.Properties("Integrated Security").Value = "SSPI"
-    ;.Properties("Persist Security Info").Value = "True"
-    .Properties("User ID").Value = $username
-    .Properties("Password").Value = $password
-    .Open
+    	;.Properties("Integrated Security").Value = "SSPI"
+    	;.Properties("Persist Security Info").Value = "True"
+    	.Properties("User ID").Value = $username
+    	.Properties("Password").Value = $password
+    	.Open
 EndWith
 $SQLRecordSet.Open($sqlString,$SQLConn)
 Local $result = $SQLRecordSet.GetString
