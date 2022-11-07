@@ -4,8 +4,8 @@ $oMyError = ObjEvent("AutoIt.Error","MyErrFunc")
 
 $server = "localhost"
 $db = "mylocaldb"
-$username = "sa"
-$password = "xxxxxx"
+$username = "___USER_NAME___"
+$password = "___PASSWORD___"
 $sqlString = "SELECT * FROM mytable"
 
 With $SQLConn
